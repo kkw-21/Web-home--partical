@@ -40,7 +40,7 @@ export default function Component() {
     function createTextImage() {
       if (!ctx || !canvas) return 0
 
-      ctx.fillStyle = "white"
+      ctx.fillStyle = "black" // Changed from white to black
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       ctx.save()
 
@@ -90,8 +90,8 @@ export default function Component() {
             baseX: x,
             baseY: y,
             size: Math.random() * 1 + 0.5,
-            color: "white",
-            scatteredColor: isEcho ? "#4F46E5" : "#10B981", // Indigo for Echo, Emerald for Chat
+            color: "#111111", // Changed from white to dark
+            scatteredColor: isEcho ? "#000000" : "#222222", // Changed to obsidian black shades
             isEcho: isEcho,
             life: Math.random() * 100 + 50,
           }
@@ -115,7 +115,7 @@ export default function Component() {
     function animate(textInfo: { fontSize: number; splitX: number }) {
       if (!ctx || !canvas) return
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      ctx.fillStyle = "black"
+      ctx.fillStyle = "white" // Changed from black to white
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       const { x: mouseX, y: mouseY } = mousePositionRef.current
@@ -135,11 +135,15 @@ export default function Component() {
           p.x = p.baseX - moveX
           p.y = p.baseY - moveY
 
+          // Add glow effect
+          ctx.shadowBlur = 5
+          ctx.shadowColor = p.isEcho ? "rgba(0, 0, 0, 0.5)" : "rgba(20, 20, 20, 0.5)"
           ctx.fillStyle = p.scatteredColor
         } else {
           p.x += (p.baseX - p.x) * 0.1
           p.y += (p.baseY - p.y) * 0.1
-          ctx.fillStyle = "white"
+          ctx.shadowBlur = 0
+          ctx.fillStyle = "#111111" // Changed from white to dark
         }
 
         ctx.fillRect(p.x, p.y, p.size, p.size)
@@ -228,23 +232,26 @@ export default function Component() {
   }, [isMobile])
 
   return (
-    <div className="relative w-full h-dvh flex flex-col items-center justify-center bg-black">
+    <div className="relative w-full h-dvh flex flex-col items-center justify-center bg-white">
       <canvas
         ref={canvasRef}
         className="w-full h-full absolute top-0 left-0 touch-none"
         aria-label="Interactive particle effect with Echo Chat text"
       />
       <div className="absolute bottom-[100px] text-center z-10">
-        <p className="font-mono text-gray-400 text-xs sm:text-base md:text-sm">
+        <p className="font-mono text-gray-600 text-xs sm:text-base md:text-sm font-medium">
           Experience the future of{" "}
-          <a href="#" className="invite-link text-gray-300 hover:text-indigo-400 transition-colors duration-300">
+          <a
+            href="#"
+            className="invite-link text-gray-700 hover:text-gray-900 transition-colors duration-300 font-bold"
+          >
             conversational AI
           </a>{" "}
           <span>with</span>
-          <span className="transition-colors duration-300"> Echo Chat</span>
+          <span className="transition-colors duration-300 font-bold"> Echo Chat</span>
           <style>{`
             a.invite-link:hover + span + span {
-              color: #10B981;
+              color: #000000;
             }
           `}</style>
         </p>
