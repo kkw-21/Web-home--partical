@@ -335,20 +335,13 @@ export default function Component() {
       {/* Scroll Prompt with Responsive Text */}
       <div className="absolute bottom-0 flex flex-col items-center justify-center z-10 pb-6 px-4 w-full max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%]">
         {/* Slogan with improved responsive sizing */}
-        <p className="font-['Space_Grotesk'] text-gray-700 text-[10px] xs:text-xs sm:text-sm md:text-sm font-medium tracking-wide text-center mb-6 leading-relaxed">
+        <p className="font-['Space_Grotesk'] text-gray-700 text-[10px] xs:text-xs sm:text-sm md:text-sm font-medium tracking-wide text-center mb-6 leading-relaxed invite-link-container">
           Experience the future of{" "}
           <a href="#" className="invite-link text-gray-900 hover:text-black transition-colors duration-300 font-bold">
             conversational AI
           </a>{" "}
           <span>with</span>
-          <span className="transition-colors duration-300 font-bold"> Echo Chat</span>
-          <style jsx>{`
-            @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
-            
-            a.invite-link:hover + span + span {
-              color: #000000;
-            }
-          `}</style>
+          <span className="echo-chat-text transition-colors duration-300 font-bold"> Echo Chat</span>
         </p>
 
         {/* Arrow indicator */}
@@ -370,28 +363,36 @@ export default function Component() {
             />
           </svg>
         </div>
-        <style jsx>{`
-          .scroll-indicator {
-            position: relative;
-            animation: pulse 2s infinite;
-          }
-          
-          @keyframes pulse {
-            0% {
-              transform: translateY(0);
-              opacity: 0.8;
-            }
-            50% {
-              transform: translateY(10px);
-              opacity: 1;
-            }
-            100% {
-              transform: translateY(0);
-              opacity: 0.8;
-            }
-          }
-        `}</style>
       </div>
+
+      {/* Global styles */}
+      <style jsx global>{`
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+        
+        .invite-link-container .invite-link:hover + span + .echo-chat-text {
+          color: #000000;
+        }
+        
+        .scroll-indicator {
+          position: relative;
+          animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+          0% {
+            transform: translateY(0);
+            opacity: 0.8;
+          }
+          50% {
+            transform: translateY(10px);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 0.8;
+          }
+        }
+      `}</style>
     </div>
   )
 }
