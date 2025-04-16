@@ -332,10 +332,10 @@ export default function Component() {
         aria-label="Interactive particle effect with Echo Chat text"
       />
 
-      {/* Scroll Prompt with Text Moved Closer */}
-      <div className="absolute bottom-0 flex flex-col items-center justify-center z-10 pb-6">
-        {/* Slogan moved closer to arrow */}
-        <p className="font-['Space_Grotesk'] text-gray-700 text-xs sm:text-base md:text-sm font-medium tracking-wide text-center mb-6">
+      {/* Scroll Prompt with Responsive Text */}
+      <div className="absolute bottom-0 flex flex-col items-center justify-center z-10 pb-6 px-4 w-full max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%]">
+        {/* Slogan with improved responsive sizing */}
+        <p className="font-['Space_Grotesk'] text-gray-700 text-[10px] xs:text-xs sm:text-sm md:text-sm font-medium tracking-wide text-center mb-6 leading-relaxed">
           Experience the future of{" "}
           <a href="#" className="invite-link text-gray-900 hover:text-black transition-colors duration-300 font-bold">
             conversational AI
@@ -354,12 +354,12 @@ export default function Component() {
         {/* Arrow indicator */}
         <div className={`scroll-indicator transition-opacity duration-700 ${scrolled ? "opacity-0" : "opacity-100"}`}>
           <svg
-            width="40"
-            height="40"
+            width="32"
+            height="32"
             viewBox="0 0 40 40"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="animate-bounce"
+            className="animate-bounce sm:w-10 sm:h-10"
           >
             <path
               d="M20 5V35M20 35L10 25M20 35L30 25"

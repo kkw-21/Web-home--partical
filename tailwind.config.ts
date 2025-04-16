@@ -11,6 +11,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "375px",
+      },
       fontFamily: {
         sans: ["Space Grotesk", "sans-serif"],
       },
