@@ -303,14 +303,39 @@ export default function Component() {
 
   return (
     <div className="relative w-full h-dvh flex flex-col items-center justify-center bg-white">
+      {/* Lightweight App Store Download Button */}
+      <a
+        href="https://apps.apple.com/app/echo-chat"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed top-6 right-6 z-50 group"
+        aria-label="Download on the App Store"
+      >
+        <div className="flex items-center gap-2 bg-black/80 backdrop-blur-sm text-white py-2 px-3 rounded-full shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105 hover:bg-black">
+          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M17.0645 12.3992C17.0484 9.8964 19.1428 8.6634 19.2347 8.6074C17.9894 6.7344 16.0578 6.4824 15.3466 6.4664C13.7262 6.3004 12.1618 7.4354 11.3386 7.4354C10.5154 7.4354 9.23006 6.4824 7.86562 6.5144C6.10402 6.5464 4.47362 7.5474 3.57242 9.1034C1.70082 12.2654 3.09242 16.9644 4.89122 19.4194C5.79242 20.6204 6.84962 21.9654 8.23162 21.9014C9.58642 21.8374 10.0954 21.0144 11.7318 21.0144C13.3682 21.0144 13.8452 21.9014 15.2642 21.8694C16.7312 21.8374 17.6324 20.6524 18.5016 19.4514C19.5428 18.0644 19.9718 16.7034 19.9878 16.6394C19.9558 16.6234 17.0805 15.5424 17.0645 12.3992Z"
+              fill="white"
+            />
+            <path
+              d="M14.5871 4.2896C15.3143 3.3846 15.8073 2.1356 15.6713 0.8706C14.6141 0.9186 13.3209 1.5956 12.5617 2.4846C11.8825 3.2756 11.2855 4.5566 11.4375 5.7896C12.6187 5.8696 13.8279 5.1946 14.5871 4.2896Z"
+              fill="white"
+            />
+          </svg>
+          <span className="text-xs font-medium">Download</span>
+        </div>
+      </a>
+
       <canvas
         ref={canvasRef}
         className="w-full h-full absolute top-0 left-0 touch-none"
         aria-label="Interactive particle effect with Echo Chat text"
       />
 
-      <div className="absolute bottom-[140px] text-center z-10">
-        <p className="font-['Space_Grotesk'] text-gray-700 text-xs sm:text-base md:text-sm font-medium tracking-wide">
+      {/* Scroll Prompt with Text Moved Closer */}
+      <div className="absolute bottom-0 flex flex-col items-center justify-center z-10 pb-6">
+        {/* Slogan moved closer to arrow */}
+        <p className="font-['Space_Grotesk'] text-gray-700 text-xs sm:text-base md:text-sm font-medium tracking-wide text-center mb-6">
           Experience the future of{" "}
           <a href="#" className="invite-link text-gray-900 hover:text-black transition-colors duration-300 font-bold">
             conversational AI
@@ -325,13 +350,9 @@ export default function Component() {
             }
           `}</style>
         </p>
-      </div>
 
-      {/* Scroll Prompt - Arrow only */}
-      <div
-        className={`absolute bottom-10 flex flex-col items-center justify-center transition-opacity duration-700 ${scrolled ? "opacity-0" : "opacity-100"}`}
-      >
-        <div className="scroll-indicator">
+        {/* Arrow indicator */}
+        <div className={`scroll-indicator transition-opacity duration-700 ${scrolled ? "opacity-0" : "opacity-100"}`}>
           <svg
             width="40"
             height="40"
